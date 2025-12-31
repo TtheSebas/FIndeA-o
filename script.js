@@ -1,5 +1,7 @@
 // --- CONFIGURACIÓN ---
-const countDate = new Date('Jan 1, 2026 00:00:00').getTime();let isPartyStarted = false;
+const countDate = new Date('Jan 1, 2026 00:00:00').getTime();
+let timerInterval;
+let isPartyStarted = false;
 
 const sentences = [
     "Que este nuevo comienzo logres todo lo que te propones.",
