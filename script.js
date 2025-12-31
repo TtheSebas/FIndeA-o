@@ -1,6 +1,5 @@
 // --- CONFIGURACIÓN ---
-const countDate = new Date('Jan 1, 2026 00:00:00').getTime();
-
+const countDate = new Date().getTime() + 5000;
 let isPartyStarted = false;
 
 const sentences = [
