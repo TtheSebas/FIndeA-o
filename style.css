@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #020210;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    position: fixed; 
+    width: 100%;
+}
+
+.bokeh-bg { position: absolute; width: 100%; height: 100%; z-index: 1; }
+
+#fireworksCanvas {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 5; pointer-events: none;
+}
+
+.light {
+    position: absolute; border-radius: 50%; filter: blur(8px); opacity: 0;
+    animation: riseUp var(--duration) infinite linear;
+    background: radial-gradient(circle, var(--color), transparent);
+}
+@keyframes riseUp {
+    0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
+    20% { opacity: 0.6; }
+    100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
+
+#countdown-container {
+    z-index: 100;
+    text-align: center;
+    transition: all 0.5s ease;
+    width: 90%;
+    max-width: 600px;
+    /* Ya no es clickable antes de tiempo */
+}
+
+.title-text {
+    font-family: 'Cinzel', serif; font-size: 1.8rem; color: #d4af37;
+    margin-bottom: 30px; letter-spacing: 3px; text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.timer-box { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+.time-unit {
+    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.3); padding: 15px 5px;
+    border-radius: 12px; width: 75px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; align-items: center;
+}
+
+.number { font-size: 2.2rem; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); line-height: 1; }
+.label { font-size: 0.65rem; text-transform: uppercase; color: #d4af37; margin-top: 8px; letter-spacing: 1px; }
+
+/* ESTILO DEL NUEVO BOTÓN */
+#celebrateBtn {
+    position: absolute;
+    z-index: 200;
+    padding: 20px 40px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #020210;
+    background: linear-gradient(45deg, #d4af37, #FFD700, #d4af37);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+    cursor: pointer;
+    animation: pulseBtn 2s infinite;
+    transition: transform 0.3s ease;
+}
+
+#celebrateBtn:active { transform: scale(0.95); }
+
+@keyframes pulseBtn {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.main-frame {
+    position: absolute; z-index: 110; width: 85%; max-width: 400px;
+    padding: 30px 20px; border: 2px solid #d4af37;
+    background: rgba(5, 5, 20, 0.90);
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+    text-align: center; border-radius: 15px;
+    opacity: 0; transform: scale(0.5); pointer-events: none;
+    transition: all 1s ease; backdrop-filter: blur(5px);
+}
+
+.main-frame.active { opacity: 1; transform: scale(1); pointer-events: all; }
+
+.greeting {
+    font-family: 'Cinzel', serif; font-size: 2.5rem;
+    background: linear-gradient(45deg, #d4af37, #fff, #d4af37);
+    background-clip: text; -webkit-background-clip: text; color: transparent;
+    margin-bottom: 20px; line-height: 1.2;
+    animation: shine 3s infinite linear; background-size: 200%;
+}
+
+.message { font-size: 1.3rem; line-height: 1.5; color: #ddd; min-height: 80px; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
+
+@keyframes shine { to { background-position: 200% center; } }
+.hidden { display: none !important; }
+
+@media (max-width: 600px) {
+    .title-text { font-size: 1.5rem; margin-bottom: 20px; }
+    .time-unit { width: 65px; padding: 10px 2px; }
+    .number { font-size: 1.8rem; }
+    .label { font-size: 0.55rem; }
+    .greeting { font-size: 2rem; } 
+    .message { font-size: 1.1rem; }
+    #celebrateBtn { font-size: 1.2rem; padding: 15px 30px; }
+    .main-frame { width: 90%; padding: 25px 15px; }
+}

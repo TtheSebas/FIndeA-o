@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Esperando el 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="partyAudio" src="cancion.mp3" loop></audio>
+
+    <div class="bokeh-bg" id="bokeh"></div>
+    <canvas id="fireworksCanvas"></canvas>
+
+    <div id="countdown-container">
+        <div class="title-text">Rumbo al 2026</div>
+        <div class="timer-box">
+            <div class="time-unit"><span class="number" id="d">00</span><span class="label">Días</span></div>
+            <div class="time-unit"><span class="number" id="h">00</span><span class="label">Horas</span></div>
+            <div class="time-unit"><span class="number" id="m">00</span><span class="label">Min</span></div>
+            <div class="time-unit"><span class="number" id="s">00</span><span class="label">Seg</span></div>
+        </div>
+        </div>
+
+    <button id="celebrateBtn" class="hidden" onclick="startParty()">
+        ¡RECIBIR EL 2026! 🥂
+    </button>
+
+    <div class="main-frame" id="mainFrame">
+        <div class="greeting">¡Feliz 2026!</div>
+        <div class="message" id="text-display"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
